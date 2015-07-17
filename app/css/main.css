@@ -1,0 +1,11 @@
+#login { display: none; }
+#help  { display: none; }
+
+/* table links */
+table a:not(.btn), .table a:not(.btn) {
+  color: white;
+  text-decoration: none;
+}
+table a:not(.btn):hover, .table a:not(.btn):hover {
+  color: yellow;
+}

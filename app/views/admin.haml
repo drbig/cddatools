@@ -1,0 +1,27 @@
+!!!
+%html{lang: 'en'}
+  %head
+    %meta{charset: 'utf-8'}/
+    %meta{content: 'IE=edge', 'http-equiv' => 'X-UA-Compatible'}/
+    %meta{content: 'width=device-width, initial-scale=1', name: 'viewport'}/
+    %title Admin Panel
+    %link{href: '/favicon.ico', rel: 'icon', type: 'image/x-icon'}/
+    %link{href: 'https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css', rel: 'stylesheet'}/
+    %link{href: 'https://bootswatch.com/cyborg/bootstrap.min.css', rel: 'stylesheet'}/
+    %link{href: '/css/main.css', rel: 'stylesheet'}/
+    %script{src: 'https://code.jquery.com/jquery-2.1.3.min.js'}
+    %script{src: 'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js'}
+    %script{src: 'https://fb.me/react-0.13.1.js'}
+    %script{src: '/js/admin.js'}
+  %body
+    .container
+      .h1 Admin panel
+      %hr
+      #admin
+      %hr
+      %small
+        %a{href: '/logout'}> Logout
+        \.
+        Powered by
+        %a{href: 'https://github.com/drbig/cddatools', target: '_blank'} CDDATools
+        &copy; Copyright 2015 Piotr S. Staszewski.

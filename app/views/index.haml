@@ -1,0 +1,62 @@
+!!!
+%html{lang: 'en'}
+  %head
+    %meta{charset: 'utf-8'}/
+    %meta{content: 'IE=edge', 'http-equiv' => 'X-UA-Compatible'}/
+    %meta{content: 'width=device-width, initial-scale=1', name: 'viewport'}/
+    %title CDDA Web Tools Directory
+    %link{href: '/favicon.ico', rel: 'icon', type: 'image/x-icon'}/
+    %link{href: 'https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css', rel: 'stylesheet'}/
+    %link{href: 'https://bootswatch.com/cyborg/bootstrap.min.css', rel: 'stylesheet'}/
+    %link{href: '/css/main.css', rel: 'stylesheet'}/
+    %script{src: 'https://code.jquery.com/jquery-2.1.3.min.js'}
+    %script{src: 'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js'}
+    %script{src: '/js/main.js'}
+  %body
+    .container
+      %h1 CDDA Web Tools Directory
+      #help
+        %hr
+        .well
+          This is the community maintained repository of links to external web pages that might
+          be useful for players. The tool links use simple mnemonic redirects and should be
+          the links you spread (so that if a tool moves somewhere else we need only to update
+          the redirect here). For transparency the arrow icon is the direct link to a tool's
+          website. If any links here are dead or there are other problems please make an issue
+          on GitHub (CDDA's GitHub), or tell on IRC or forum.
+      %hr
+      - if sites.any?
+        %table.table.table-striped
+          %thead
+            %th
+              Tool
+              %sup
+                %a{onclick: 'help()'}
+                  %span.glyphicon.glyphicon-question-sign
+            %th Description
+          %tbody
+            - sites.values.sort {|a, b| a.title <=> b.title }.each do |s|
+              %tr
+                %td.text-nowrap.lead
+                  %a{href: s.url, target: '_blank', alt: 'Direct link'}
+                    %span.small.glyphicon.glyphicon-circle-arrow-right
+                    %a{href: "http://#{domain}/#{s.host}", target: '_blank'}= s.title
+                %td.small= s.desc
+      - else
+        No tools defined.
+      %hr
+      %small
+        - if session[:logged]
+          %a{href: '/admin'}> Admin panel
+        - else
+          %a{onclick: 'login()'}> Login
+        \.
+        Powered by
+        %a{href: 'https://github.com/drbig/cddatools', target: '_blank'} CDDATools
+        &copy; Copyright 2015 Piotr S. Staszewski.
+      #login
+        %form.form-inline{role: 'form', action: '/login', method: 'post'}
+          .form-group
+            %input.form-control{name: 'pass', type: 'password', placeholder: 'Password'}
+          .form-group
+            %button.btn.btn-success{type: 'submit'} Admin panel
